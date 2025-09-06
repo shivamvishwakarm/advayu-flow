@@ -25,6 +25,18 @@ All colors MUST be HSL.
     --brand-primary-light: 187 76% 50%;
     --brand-primary-dark: 187 76% 30%;
     --brand-gradient: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-primary-light)));
+    --brand-subtle: 187 30% 95%;
+    --brand-accent: 187 50% 85%;
+    
+    /* Enhanced shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-brand: 0 10px 25px -5px hsl(var(--brand-primary) / 0.15);
+    
+    /* Improved transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;

@@ -54,32 +54,38 @@ const BrandOnboarding = () => {
 
   if (isSubmitted) {
     return (
-      <div className="max-w-2xl mx-auto p-6">
-        <Card>
+      <div className="w-full animate-fade-in">
+        <Card className="bg-white/80 backdrop-blur-sm border border-white/30 shadow-brand">
           <CardContent className="pt-8 text-center">
-            <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-              <CheckCircle className="w-8 h-8 text-primary" />
+            <div className="mx-auto w-20 h-20 bg-gradient-to-br from-green-100 to-green-50 rounded-full flex items-center justify-center mb-6 shadow-lg">
+              <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            <h1 className="text-2xl font-bold mb-2">Onboarding Complete!</h1>
-            <p className="text-muted-foreground mb-6">
+            <h1 className="text-3xl font-bold mb-3 text-gray-900">Onboarding Complete!</h1>
+            <p className="text-gray-600 mb-8 text-lg">
               Thank you for submitting your brand information. Our team will review your application and contact you within 24 hours.
             </p>
             
-            <div className="bg-muted/50 p-4 rounded-lg mb-6 text-left">
-              <h3 className="font-medium mb-2">Application Summary:</h3>
-              <div className="text-sm text-muted-foreground space-y-1">
-                <p><strong>Brand:</strong> {formData.brandName}</p>
-                <p><strong>Category:</strong> {formData.brandCategory}</p>
-                <p><strong>Outlets:</strong> {formData.outlets.length} outlet(s)</p>
-                <p><strong>Contact:</strong> {formData.contactEmail}</p>
+            <div className="bg-brand-subtle/50 border border-brand-accent/30 p-6 rounded-xl mb-8 text-left">
+              <h3 className="font-semibold mb-4 text-gray-900">Application Summary:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="space-y-2">
+                  <p><span className="font-medium text-gray-700">Brand:</span> <span className="text-gray-900">{formData.brandName}</span></p>
+                  <p><span className="font-medium text-gray-700">Category:</span> <span className="text-gray-900">{formData.brandCategory}</span></p>
+                </div>
+                <div className="space-y-2">
+                  <p><span className="font-medium text-gray-700">Outlets:</span> <span className="text-gray-900">{formData.outlets.length} outlet(s)</span></p>
+                  <p><span className="font-medium text-gray-700">Contact:</span> <span className="text-gray-900">{formData.contactEmail}</span></p>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <p className="text-sm text-muted-foreground">
-                Reference ID: <span className="font-mono">ADV-{Date.now().toString().slice(-8)}</span>
-              </p>
-              <Button onClick={handleStartAgain} variant="outline">
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="text-sm text-gray-600">
+                  Reference ID: <span className="font-mono font-semibold text-brand">ADV-{Date.now().toString().slice(-8)}</span>
+                </p>
+              </div>
+              <Button onClick={handleStartAgain} variant="outline" className="border-brand text-brand hover:bg-brand hover:text-white">
                 Submit Another Application
               </Button>
             </div>
@@ -90,24 +96,28 @@ const BrandOnboarding = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="mb-8 text-center">
-        <div className="flex items-center justify-center mb-4">
-          <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-            <Building2 className="w-6 h-6 text-primary-foreground" />
+    <div className="w-full">
+      {/* Header */}
+      <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl p-6 mb-8 shadow-brand">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-14 h-14 bg-gradient-to-br from-brand to-brand-light rounded-xl flex items-center justify-center shadow-lg">
+            <Building2 className="w-7 h-7 text-white" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Brand Onboarding</h1>
+            <p className="text-gray-600">Complete your registration to get started with Advayu</p>
           </div>
         </div>
-        <h1 className="text-3xl font-bold mb-2">Brand Onboarding</h1>
-        <p className="text-muted-foreground">Complete your registration to get started with Advayu</p>
+        
+        <StepIndicator 
+          steps={steps} 
+          currentStep={currentStep} 
+          completedSteps={completedSteps} 
+        />
       </div>
 
-      <StepIndicator 
-        steps={steps} 
-        currentStep={currentStep} 
-        completedSteps={completedSteps} 
-      />
-
-      <div className="mt-8">
+      {/* Form Content */}
+      <div className="animate-scale-in">
         {currentStep === 0 && <BrandInformationStep onNext={handleNext} />}
         {currentStep === 1 && <OutletsStep onNext={handleNext} onPrevious={handlePrevious} />}
         {currentStep === 2 && <ComplianceStep onNext={handleNext} onPrevious={handlePrevious} />}

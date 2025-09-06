@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import advayuLogo from "@/assets/advayuClubLogo.png";
 
 const container = {
   animate: {
@@ -24,14 +25,13 @@ const Content = () => {
       {/* logo */}
       <motion.div variants={child}>
         <img
-          src="src/assets/advayuClubLogo.svg"
-          alt="logo"
-          width={200}
-          height={200}
+          src={advayuLogo}
+          alt="Advayu logo"
+          className="w-48 h-auto"
         />
       </motion.div>
       {/* tagline */}
-      <motion.div variants={child} className="md:text-3xl text-xl font-sm text-neutral-500">
+      <motion.div variants={child} className="md:text-3xl text-xl font-sm text-gray-700">
         <span className="font-bold"> Built </span> into where{" "}
         <span className="font-bold">
           money moves, <br /> Designed{" "}

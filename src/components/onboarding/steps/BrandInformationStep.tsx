@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Upload } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -52,36 +52,37 @@ const BrandInformationStep = ({ onNext }: BrandInformationStepProps) => {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-xl font-semibold">Brand Information</CardTitle>
-        <p className="text-muted-foreground">Tell us about your brand</p>
+    <Card className="bg-white/80 backdrop-blur-sm border border-white/30 shadow-brand animate-fade-in">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-xl font-semibold text-gray-900">Brand Information</CardTitle>
+        <p className="text-gray-600">Tell us about your brand to get started</p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label htmlFor="brandName">Brand Name *</Label>
+              <Label htmlFor="brandName" className="text-sm font-medium text-gray-700">Brand Name *</Label>
               <Input
                 id="brandName"
                 {...register("brandName", { required: "Brand name is required" })}
                 placeholder="Enter your brand name"
+                className="h-11 border-gray-200 focus:border-brand focus:ring-brand/20"
               />
               {errors.brandName && (
-                <p className="text-sm text-destructive">{errors.brandName.message}</p>
+                <p className="text-sm text-red-500">{errors.brandName.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="brandCategory">Brand Category *</Label>
+              <Label htmlFor="brandCategory" className="text-sm font-medium text-gray-700">Brand Category *</Label>
               <Select
                 value={watch("brandCategory")}
                 onValueChange={(value) => setValue("brandCategory", value)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="h-11 border-gray-200 focus:border-brand focus:ring-brand/20">
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border border-gray-200 shadow-lg">
                   {brandCategories.map((category) => (
                     <SelectItem key={category} value={category}>
                       {category}
@@ -90,17 +91,17 @@ const BrandInformationStep = ({ onNext }: BrandInformationStepProps) => {
                 </SelectContent>
               </Select>
               {!watch("brandCategory") && (
-                <p className="text-sm text-destructive">Please select a category</p>
+                <p className="text-sm text-red-500">Please select a category</p>
               )}
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="logo">Brand Logo</Label>
-            <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-              <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+            <Label htmlFor="logo" className="text-sm font-medium text-gray-700">Brand Logo</Label>
+            <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-brand/50 transition-colors">
+              <ArrowRight className="mx-auto h-12 w-12 text-gray-400 mb-4 rotate-90" />
               <div className="space-y-2">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-gray-600">
                   Upload your brand logo (PNG, JPG, SVG)
                 </p>
                 <Input
@@ -111,35 +112,36 @@ const BrandInformationStep = ({ onNext }: BrandInformationStepProps) => {
                   id="logo-upload"
                 />
                 <Label htmlFor="logo-upload" className="cursor-pointer">
-                  <Button type="button" variant="outline" className="mt-2">
+                  <Button type="button" variant="outline" className="mt-2 border-brand text-brand hover:bg-brand hover:text-white">
                     Choose File
                   </Button>
                 </Label>
                 {formData.logoFile && (
-                  <p className="text-sm text-primary">{formData.logoFile.name}</p>
+                  <p className="text-sm text-brand font-medium">{formData.logoFile.name}</p>
                 )}
               </div>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium">Contact Person</h3>
+            <h3 className="text-lg font-semibold text-gray-900">Contact Person</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="contactName">Full Name *</Label>
+                <Label htmlFor="contactName" className="text-sm font-medium text-gray-700">Full Name *</Label>
                 <Input
                   id="contactName"
                   {...register("contactName", { required: "Contact name is required" })}
                   placeholder="Enter full name"
+                  className="h-11 border-gray-200 focus:border-brand focus:ring-brand/20"
                 />
                 {errors.contactName && (
-                  <p className="text-sm text-destructive">{errors.contactName.message}</p>
+                  <p className="text-sm text-red-500">{errors.contactName.message}</p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="contactPhone">Phone Number *</Label>
+                <Label htmlFor="contactPhone" className="text-sm font-medium text-gray-700">Phone Number *</Label>
                 <Input
                   id="contactPhone"
                   type="tel"
@@ -151,14 +153,15 @@ const BrandInformationStep = ({ onNext }: BrandInformationStepProps) => {
                     }
                   })}
                   placeholder="10-digit mobile number"
+                  className="h-11 border-gray-200 focus:border-brand focus:ring-brand/20"
                 />
                 {errors.contactPhone && (
-                  <p className="text-sm text-destructive">{errors.contactPhone.message}</p>
+                  <p className="text-sm text-red-500">{errors.contactPhone.message}</p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="contactEmail">Email Address *</Label>
+                <Label htmlFor="contactEmail" className="text-sm font-medium text-gray-700">Email Address *</Label>
                 <Input
                   id="contactEmail"
                   type="email"
@@ -170,17 +173,21 @@ const BrandInformationStep = ({ onNext }: BrandInformationStepProps) => {
                     }
                   })}
                   placeholder="Enter email address"
+                  className="h-11 border-gray-200 focus:border-brand focus:ring-brand/20"
                 />
                 {errors.contactEmail && (
-                  <p className="text-sm text-destructive">{errors.contactEmail.message}</p>
+                  <p className="text-sm text-red-500">{errors.contactEmail.message}</p>
                 )}
               </div>
             </div>
           </div>
 
-          <div className="flex justify-end">
-            <Button type="submit" className="px-8">
-              Next Step
+          <div className="flex justify-end pt-4 border-t border-gray-100">
+            <Button 
+              type="submit" 
+              className="px-8 py-3 bg-gradient-to-r from-brand to-brand-light hover:from-brand-dark hover:to-brand text-white font-medium rounded-lg shadow-lg hover:shadow-brand transition-all duration-300"
+            >
+              Next Step <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </form>
