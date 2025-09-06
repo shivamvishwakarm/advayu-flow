@@ -17,8 +17,14 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 187 76% 39%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Brand specific colors */
+    --brand-primary: 187 76% 39%;
+    --brand-primary-light: 187 76% 50%;
+    --brand-primary-dark: 187 76% 30%;
+    --brand-gradient: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-primary-light)));
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -65,8 +71,14 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 187 76% 45%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Brand specific colors - dark mode */
+    --brand-primary: 187 76% 45%;
+    --brand-primary-light: 187 76% 55%;
+    --brand-primary-dark: 187 76% 35%;
+    --brand-gradient: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-primary-light)));
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
